@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+define("PAGEFORMATION", "pages/formations.html.twig");
+
 /**
  * Controleur des formations
  *
@@ -15,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class FormationsController extends AbstractController
 {
-const PAGEFORMATION = 'pages/formations.html.twig';
+
     /**
      *
      * @var FormationRepository
@@ -42,7 +44,7 @@ const PAGEFORMATION = 'pages/formations.html.twig';
     {
         $formations = $this->formationRepository->findAll();
         $categories = $this->categorieRepository->findAll();
-        return $this->render(self::PAGEFORMATION, [
+        return $this->render(PAGEFORMATION, [
             'formations' => $formations,
             'categories' => $categories
         ]);
@@ -59,7 +61,7 @@ const PAGEFORMATION = 'pages/formations.html.twig';
     {
         $formations = $this->formationRepository->findAllOrderBy($champ, $ordre, $table);
         $categories = $this->categorieRepository->findAll();
-        return $this->render(self::PAGEFORMATION, [
+        return $this->render(PAGEFORMATION, [
             'formations' => $formations,
             'categories' => $categories
         ]);
@@ -77,7 +79,7 @@ const PAGEFORMATION = 'pages/formations.html.twig';
         $valeur = $request->get("recherche");
         $formations = $this->formationRepository->findByContainValue($champ, $valeur, $table);
         $categories = $this->categorieRepository->findAll();
-        return $this->render(self::PAGEFORMATION, [
+        return $this->render(PAGEFORMATION, [
             'formations' => $formations,
             'categories' => $categories,
             'valeur' => $valeur,
@@ -93,8 +95,9 @@ const PAGEFORMATION = 'pages/formations.html.twig';
     public function showOne($id): Response
     {
         $formation = $this->formationRepository->find($id);
-        return $this->render(self::PAGEFORMATION, [
-            'formation' => $formation
+        return $this->render("pages/formation.html.twig", [
+            'formation' => $formation,
+            
         ]);
     }
  
