@@ -28,7 +28,7 @@ class FormationType extends AbstractType {
                 ])
                 ->add('description', TextareaType::class,[
                     'label' => 'Description',
-                    'required' => true
+                    'required' => false
                 ])
                 ->add('playlist', EntityType::class,[
                     'class' => Playlist::class,

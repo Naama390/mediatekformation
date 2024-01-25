@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+define("PAGEADMINFORMATION", "admin/admin.formations.html.twig");
 
 class AdminFormationsController extends AbstractController
 {
@@ -26,7 +27,8 @@ class AdminFormationsController extends AbstractController
     
     /**
      * Creation du constructeur
-     * @param FormationRepository $repository
+     * @param FormationRepository $formationRepository
+     * @param CategorieRepository $categorieRepository
      */
     public function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository)
     {
@@ -42,20 +44,21 @@ class AdminFormationsController extends AbstractController
     {
         $formations= $this->formationRepository->findAllOrderBy("title", "ASC");
         $categories=$this->categorieRepository->findAll();
-        return $this->render("admin/admin.formations.html.twig", [
+        return $this->render(PAGEADMINFORMATION, [
                 'formations'=> $formations,
                 'categories'=> $categories
                 ]);
     }
     
     /**
-     * @Route("/admin", name="admin.delete.formation")
-     * @param Formation $formation
+     * Suppression d'une formation
+     * @Route("/admin/delete/{id}", name="admin.delete.formations")
+     * @param Formation $formations
      * @return Response
      */
-    public function delete(Formation $formation): Response
+    public function delete(Formation $formations): Response
     {
-        $this->formationRepository->remove($formation, true);
+        $this->formationRepository->remove($formations, true);
         return $this->redirectToRoute("admin.formations");
     }
     
@@ -119,14 +122,14 @@ class AdminFormationsController extends AbstractController
         $formations= $this-> formationRepository->findAllOrderBy($champ, $ordre, $table);
         $categories= $this-> categorieRepository->findAll();
         
-        return $this-> render("admin/admin.formations.html.twig", [
+        return $this-> render(PAGEADMINFORMATION, [
             'formations' => $formations,
             'categories' => $categories
         ]);
     }
     
     /**
-     * Recherche par filtrage 
+     * Recherche par filtrage
      * @Route("/admin/formations/recherche/{champ}/{table}", name="admin.formations.findallcontain")
      * @param type $champ
      * @param Request $request
@@ -138,7 +141,7 @@ class AdminFormationsController extends AbstractController
         $valeur = $request->get("recherche");
         $formations = $this->formationRepository->findByContainValue($champ, $valeur, $table);
         $categories = $this->categorieRepository->findAll();
-        return $this->render("admin/admin.formations.html.twig", [
+        return $this->render(PAGEADMINFORMATION, [
             'formations' => $formations,
             'categories' => $categories,
             'valeur' => $valeur,
