@@ -55,5 +55,23 @@ class CategorieRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getResult();
     }
+    
+    /**
+     * Retourne la liste des categories dont le nom est
+     * la meme que la valeur entree ou tout si la valeur est vide
+     * @param $name
+     * @return array
+     */
+    public function findAllWithFilterName($name)
+    {
+        $queryBuilder = $this->createQueryBuilder('c');
+
+        if ($name !== '') {
+            $queryBuilder->where('c.name = :name')
+                ->setParameter('name', $name);
+    }
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 
 }

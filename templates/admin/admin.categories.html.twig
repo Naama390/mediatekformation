@@ -1,0 +1,52 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+    <h5>Gestion des catégories</h5>
+    <div class="container mt-3">
+            <form class="text-end form-inline mt-1" method="POST" action="{{ path('admin.add.categories') }}">
+                <div class="form-group mr-1 mb-2">
+                    <input type="text" class="form-control" name="name" placeholder="Ajouter une catégorie">
+                    <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
+                </div>
+             </form>
+    </div>
+    <table class="table table-striped">
+        <caption>Tableau présentant les catégories</caption>
+        <thead>
+            <tr>
+                <th class="text-left align-top" scope="col">
+                    Catégories<br />
+                </th>
+                <th class="text-left align-top" scope="col">
+                    Nombre de formations<br />
+                </th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        <option value=""></option>
+            {% for categorie in categories %}
+                <tr class="align-top">
+                    <td>
+                        <h5 class="text-info">
+                            {{ categorie.name }}
+                        </h5>
+                    </td>
+                    <td>
+                        <h5 class="text-left">
+                            {{ categorie.formations|length }}
+                        </h5>
+                    </td>
+                    <td class="text-end">
+                        {% if categorie.formations|length == 0 %}
+                            <a href="{{ path('admin.delete.categories', {id:categorie.id}) }}" class="btn btn-danger"
+                               onclick="return confirm('Confirmer la suppression de {{categorie.name}}')">Supprimer</a>
+                        {% else %}
+                            <button class="btn btn-danger" disabled>Supprimer</button>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
