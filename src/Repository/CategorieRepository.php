@@ -58,7 +58,7 @@ class CategorieRepository extends ServiceEntityRepository
     
     /**
      * Retourne la liste des categories dont le nom est
-     * la meme que la valeur entree ou tout si la valeur est vide
+     * le meme que la valeur entree ou tout si la valeur est vide
      * @param $name
      * @return array
      */
