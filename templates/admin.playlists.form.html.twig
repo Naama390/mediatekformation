@@ -2,10 +2,27 @@
 
 <div class="row">
     <div class="col-8">
-        {{ form_row(formplaylist.name) }}
-        {{ form_row(formplaylist.description) }}
-        {{ form_row (formplaylist.formations) }}
-        {{ form_row(formplaylist.submit) }}
+        {{ form_label(formplaylist.name, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(formplaylist.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="col-8">
+        {{ form_label(formplaylist.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(formplaylist.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    {% if editMode %}
+        <div class="col-8">
+            {{ form_label(formplaylist.formations, 'Formations', {'label_attr': {'class': 'form-label'}}) }}<br>
+            <select name="{{ formplaylist.formations.vars.full_name }}" class="form-control">
+                {% for formations in formationsPlaylist %}
+                    <option value="{{ formations.id }}" disabled>{{ formations.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    {% endif %}
+    <div class="row justify-content-end">
+        <div class="col-md-6">
+            {{ form_widget(formplaylist.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
     </div>
 </div>
 {{ form_end(formplaylist) }}

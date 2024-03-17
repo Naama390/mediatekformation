@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 
 /**
- * Description of FormationType
+ * Formulaire FormationType qui permet d'ajouter ou modifier une formation
  *
  * @author Naama Blum
  */
@@ -49,6 +49,10 @@ class FormationType extends AbstractType {
                     'data' => $options['data']->getPublishedAt() ?? new \DateTime(),
                     'label' => 'Date',
                     'required' => true
+                ])
+                ->add('videoId', TextType::class,[
+                    'label' => 'Lien de la vidéo',
+                    'required' => false,
                 ])
                 ->add('submit', SubmitType::class,[
                     'label' => 'Confirmer'

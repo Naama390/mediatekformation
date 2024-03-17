@@ -3,7 +3,7 @@
 {% block body %}
     <h5>Gestion des playlists</h5>
     <p class="text-end">
-        <a href="{{ path('admin.add.formations') }}" class="btn btn-primary">Ajouter une formation</a>
+        <a href="{{ path('admin.add.playlists') }}" class="btn btn-primary">Ajouter une playlist</a>
     </p>
     <table class=" table table-striped">
         <caption>Tableau presentant toutes les playlists</caption>
@@ -50,8 +50,8 @@
             </tr>
         </thead>
         <tbody>
-            {% for k in 0..playlists|length-1  %}
-                {% for playlist in playlists  %}
+            {% if playlists|length > 0 %}
+                {% for k in 0..playlists|length-1  %}
                     <tr class="align-middle">
                         <td>
                             <h5 class="text-info">
@@ -76,12 +76,16 @@
                             <a href="{{ path('admin.edit.playlists', {id:playlists[k].id}) }}" class="btn btn-success">Editer</a>
                         </td>
                         <td>
-                            <a href="{{ path('admin.delete.playlists', {id:playlists[k].id}) }}" class="btn btn-danger"
-                               onclick="return confirm('Confirmer la suppression de la playlist {{playlists[k].name}}')">Supprimer</a>
+                            {% if playlists[k].formations|length == 0 %}
+                                <a href="{{ path('admin.delete.playlists', {id:playlists[k].id}) }}" class="btn btn-danger"
+                                onclick="return confirm('Confirmer la suppression de la playlist {{playlists[k].name}}');">Supprimer</a>
+                            {% else %}
+                            <button class="btn btn-danger" disabled>Supprimer</button>
+                            {% endif %}
                         </td>
 
                     </tr>
                 {% endfor %}
-            {% endfor %}
+            {% endif %}
         </tbody>
     {% endblock %}

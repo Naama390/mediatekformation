@@ -67,7 +67,7 @@ class AdminPlaylistsController extends AbstractController
      */
     public function delete(Playlist $playlists): Response
     {
-        $this->paylistRepository->remove($playlists, true);
+        $this->playlistRepository->remove($playlists, true);
         return $this->redirectToRoute("admin.playlists");
     }
     
@@ -80,7 +80,8 @@ class AdminPlaylistsController extends AbstractController
      */
     public function edit(Playlist $playlists, Request $request): Response
     {
-        $formPlaylist = $this->createForm(PlaylistType::class, $playlists);
+        $formationsPlaylist = $playlists->getFormations();
+        $formPlaylist = $this->createForm(PlaylistType::class, $playlists, ['editMode' => true]);
         
         $formPlaylist->handleRequest($request);
         if ($formPlaylist->isSubmitted() && $formPlaylist->isValid()) {
@@ -90,7 +91,9 @@ class AdminPlaylistsController extends AbstractController
         
         return $this-> render("admin/admin.edit.playlists.html.twig", [
             'playlists' => $playlists,
-            'formplaylist' => $formPlaylist ->createView()
+            'formplaylist' => $formPlaylist ->createView(),
+            'formationsPlaylist' => $formationsPlaylist,
+            'editMode' => true,
         ]);
     }
     
@@ -103,18 +106,20 @@ class AdminPlaylistsController extends AbstractController
     public function add(Request $request): Response
     {
         $playlists = new Playlist();
-        $formPlaylist = $this -> createForm(PlaylistType::class, $playlists);
+        $formPlaylist = $this -> createForm(PlaylistType::class, $playlists, ['editMode' => false]);
         
         $formPlaylist->handleRequest($request);
-        if ($formPlaylist->isSubmitted() && $formPlaylist->isValid()) {
+        if ($formPlaylist->isSubmitted() && $formPlaylist->isValid())
+        {   
             $this-> playlistRepository-> add($playlists, true);
             $this-> addFlash("success", "La playlist a été ajoutée avec succès.");
-            return $this->redirectToRoute("admin.playlists");
+            return $this->redirectToRoute('admin.playlists');
         }
         
         return $this->render("admin/admin.add.playlists.html.twig", [
             'playlists' => $playlists,
-            'formplaylist' => $formPlaylist ->createView()
+            'formplaylist' => $formPlaylist ->createView(),
+            'editMode' => false,
         ]);
     }
     

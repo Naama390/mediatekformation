@@ -1,16 +1,35 @@
 {{ form_start(formformation) }}
-<div class="row">
-    <div class="col">
-        {{ form_row(formformation.publishedAt) }}
+<div class="form-group">
+    <div class="col-2">
+        {{ form_label(formformation.publishedAt, 'Date', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(formformation.publishedAt, {'attr': {'class': 'form-control'}}) }}
     </div>
 </div>
 <div class="row">
     <div class="col-8">
-        {{ form_row(formformation.title) }}
-        {{ form_row(formformation.description) }}
-        {{ form_row(formformation.playlist) }}
-        {{ form_row(formformation.categories) }}
-        {{ form_row(formformation.submit) }}
+        {{ form_label(formformation.title, 'Titre', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(formformation.title, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="col-8">
+        {{ form_label(formformation.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(formformation.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="col-8">
+        {{ form_label(formformation.playlist, 'Playlist', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(formformation.playlist, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="col-8">
+        {{ form_label(formformation.categories, 'Categorie', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(formformation.categories, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="col-8">
+        {{ form_label(formformation.videoId, 'Lien de la video', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(formformation.videoId, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-6">
+            {{ form_widget(formformation.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
     </div>
 </div>
 {{ form_end(formformation) }}
