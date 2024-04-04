@@ -13,5 +13,5 @@ jobs:
       with:
         server: node81-eu.n0c.com
         server-dir: /public_html/
-        username: naamablum@mediatek.formation.go.yj.f
+        username: naamablum@mediatek.formation.go.yj.fr
         password: ${{ secrets.ftp_password }}
