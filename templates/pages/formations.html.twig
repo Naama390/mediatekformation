@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th class="text-left align-top" scope="col">
-                    formations<br />
+                    formation<br />
                     <a href="{{ path('formations.sort', {champ:'title', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('formations.sort', {champ:'title', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
                     <form class="form-inline mt-1" method="POST" action="{{ path('formations.findallcontain', {champ:'title'}) }}">
@@ -17,7 +17,7 @@
                     </form>                    
                 </th>
                 <th class="text-left align-top" scope="col">
-                    playlists<br />
+                    playlist<br />
                     <a href="{{ path('formations.sort', {table:'playlist',  champ:'name', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('formations.sort', {table:'playlist', champ:'name', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
                     <form class="form-inline mt-1" method="POST" action="{{ path('formations.findallcontain', {champ:'name', table:'playlist'}) }}">
@@ -46,7 +46,7 @@
                     </form>            
                 </th>
                 <th class="text-center align-top" scope="col">
-                    date<br />
+                    Date<br />
                     <a href="{{ path('formations.sort', {champ:'publishedAt', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('formations.sort', {champ:'publishedAt', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>                    
                 </th>
