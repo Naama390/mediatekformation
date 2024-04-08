@@ -18,7 +18,7 @@
                     </form>                    
                 </th>
                 <th class="text-left align-top" scope="col">
-                    catégories
+                    Catégories
                     <form class="form-inline mt-1" method="POST" action="{{ path('playlists.findallcontain', {champ:'id', table:'categories'}) }}">
                         <select class="form-select form-select-sm" name="recherche" id="recherche" onchange="this.form.submit()">
                             <option value=""></option>
@@ -34,7 +34,7 @@
                     </form>            
                 </th>
                 <th class="text-center align-top" scope="col">
-                    formations par playlist<br>
+                    Formations par playlist<br>
                     <a href="{{ path('playlists.sort', {champ:'nbformations', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('playlists.sort', {champ:'nbformations', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
                 </th>
