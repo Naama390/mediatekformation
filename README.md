@@ -90,6 +90,7 @@ Le chemin des images (des 2 tailles) n'est pas mémorisé dans la BDD car il peu
 - Concernant la gestion des formations, la liste apparait, et il est possible d'ajouter, modifier ou supprimer une formation. Pour l'ajout ou la modification, redirection vers un formulaire (prérempli pour la modification). Dans ce formulaire, la saisie est controllée, la playlist et la catégorie sont a sélectionner dans une liste, et la date, elle aussi a sélectionner ne peut pas etre antérieure a la date du jour.
 Pour la suppression, lorsqu'une formation est supprimée, une confirmation est requise, et la formation sera automatique supprimée dans la playlist a laquelle elle appartient.
 Les memes tris et filtres presents dan sle front office le sont dans le back office.
+![img8](IMG/UML gestion des catégories.vsdx)
 - Concernant la gestion des playlists, la liste apparait, et il est possible d'ajouter, de modifier ou de supprimer une playlist. Pour l'ajout et la modification, redirection vers un formulaire (prérempli pour la modification). Dans ce formulaire, la saisie est controllée.
 Pour la suppression, elle n'est possible quee si aucune formation n'est rattachée a la playlist. 
 Les memes tris et filtres presents dan sle front office le sont dans le back office.
