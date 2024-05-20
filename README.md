@@ -83,3 +83,19 @@ Le chemin des images (des 2 tailles) n'est pas mémorisé dans la BDD car il peu
 - Ouvrir une fenêtre de commandes en mode admin, se positionner dans le dossier du projet et taper "composer install" pour reconstituer le dossier vendor.<br>
 - Récupérer le fichier mediatekformation.sql en racine du projet et l'utiliser pour créer la BDD MySQL "mediatekformation" en root sans pwd (si vous voulez mettre un login/pwd d'accès, il faut le préciser dans le fichier ".env" en racine du projet).<br>
 - De préférence, ouvrir l'application dans un IDE professionnel. L'adresse pour la lancer est : http://localhost/mediatekformation/public/index.php<br>
+
+### Ajout de fonctionnalités
+-Dans la page playlist, ajout d'une colonne indiquant le nombre de formations par playlist. Sur cette colonne, un tri croissant ou décroissant est possile, permettant d'afficher les playlists dans l'ordre selon leur nombre de formations.
+-Création d'une partie back office, permettant la gestion des formations, playlists et catégories apres authentification.
+-Concernant la gestion des formations, la liste apparait, et il est possible d'ajouter, modifier ou supprimer une formation. Pour l'ajout ou la modification, redirection vers un formulaire (prérempli pour la modification). Dans ce formulaire, la saisie est controllée, la playlist et la catégorie sont a sélectionner dans une liste, et la date, elle aussi a sélectionner ne peut pas etre antérieure a la date du jour.
+Pour la suppression, lorsqu'une formation est supprimée, une confirmation est requise, et la formation sera automatique supprimée dans la playlist a laquelle elle appartient.
+Les memes tris et filtres presents dan sle front office le sont dans le back office.
+-Concernant la gestion des playlists, la liste apparait, et il est possible d'ajouter, de modifier ou de supprimer une playlist. Pour l'ajout et la modification, redirection vers un formulaire (prérempli pour la modification). Dans ce formulaire, la saisie est controllée.
+Pour la suppression, elle n'est possible quee si aucune formation n'est rattachée a la playlist. 
+Les memes tris et filtres presents dan sle front office le sont dans le back office.
+-Concernant la gestion des catégories, la liste apparait, et il est possible de d'ajouter ou de supprimer une catégorie. Pour l'ajout, un mini formulaire apparait en haut de la page, et il n'est pas possible d'ajouter une catégorie si le nom est déja existant.
+Pour la suppression, une catégorie ne peut etre supprimée que si aucune formation ne lui est rattachée.
+-L'authentification de l'accès est gérée par Keycloak. Il est possible de se déconnecter a partir de toutes les pages.
+-La documentation technique a été générée.
+-Le site est déployé et le serveur d'authentifcation Keycloack est configurée sur une vm en ligne.
+- Mise en place du déploiement continu
