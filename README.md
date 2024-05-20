@@ -94,7 +94,7 @@ Les memes tris et filtres presents dan sle front office le sont dans le back off
 - Concernant la gestion des playlists, la liste apparait, et il est possible d'ajouter, de modifier ou de supprimer une playlist. Pour l'ajout et la modification, redirection vers un formulaire (prérempli pour la modification). Dans ce formulaire, la saisie est controllée.
 Pour la suppression, elle n'est possible quee si aucune formation n'est rattachée a la playlist. 
 Les memes tris et filtres presents dan sle front office le sont dans le back office.
-![img9(]https://github.com/Naama390/mediatekformation/blob/master/IMG/UML%20gestion%20des%20playlists.jpeg)
+![img9](https://github.com/Naama390/mediatekformation/blob/master/IMG/UML%20gestion%20des%20playlists.jpeg)
 - Concernant la gestion des catégories, la liste apparait, et il est possible de d'ajouter ou de supprimer une catégorie. Pour l'ajout, un mini formulaire apparait en haut de la page, et il n'est pas possible d'ajouter une catégorie si le nom est déja existant.
 Pour la suppression, une catégorie ne peut etre supprimée que si aucune formation ne lui est rattachée.
 ![img10](https://github.com/Naama390/mediatekformation/blob/master/IMG/UML%20gestion%20des%20cat%C3%A9gories.jpg))
